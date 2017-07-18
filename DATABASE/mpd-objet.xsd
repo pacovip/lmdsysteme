@@ -1,0 +1,146 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<xsd:schema name="mpd-objet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+  <xsd:element name="ue">
+   <xsd:annotation>
+    <xsd:documentation>
+     Unité d&#39;Enseignement
+    </xsd:documentation>
+   </xsd:annotation>
+   <xsd:element name="idue" type="xsd:int"/>
+   <xsd:element name="libue" type="xsd:string"/>
+   <xsd:element name="df" type="groupeniveau" minOccurs="0" maxOccurs="unbounded"/>
+   <xsd:element name="df" type="ecue"  maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="ecue">
+   <xsd:element name="idecue" type="xsd:int"/>
+   <xsd:element name="libecue" type="xsd:string"/>
+   <xsd:element name="enseigner" type="enseigner"  maxOccurs="unbounded"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer"  maxOccurs="unbounded"/>
+   <xsd:element name="df" type="ue"/>
+  </xsd:element>
+  
+  <xsd:element name="enseignant">
+   <xsd:element name="idens" type="xsd:int"/>
+   <xsd:element name="matricens" type="xsd:string"/>
+   <xsd:element name="civiliteens" type="xsd:string"/>
+   <xsd:element name="nomens" type="xsd:string"/>
+   <xsd:element name="pnomens" type="xsd:string"/>
+   <xsd:element name="adrens" type="xsd:string"/>
+   <xsd:element name="emailens" type="xsd:string"/>
+   <xsd:element name="celens" type="xsd:int"/>
+   <xsd:element name="telens" type="xsd:int"/>
+   <xsd:element name="mdpens" type="xsd:string"/>
+   <xsd:element name="dateajoutens" type="xsd:date"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="enseigner" type="enseigner"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer"  maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="niveau">
+   <xsd:element name="idniv" type="xsd:int"/>
+   <xsd:element name="libniv" type="xsd:string"/>
+   <xsd:element name="df" type="groupeniveau" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="etudiant">
+   <xsd:element name="idetu" type="xsd:int"/>
+   <xsd:element name="matricetu" type="xsd:string"/>
+   <xsd:element name="sexeetu" type="xsd:string"/>
+   <xsd:element name="nometu" type="xsd:string"/>
+   <xsd:element name="pnometu" type="xsd:string"/>
+   <xsd:element name="lieunaissetu" type="xsd:string"/>
+   <xsd:element name="datenaissetu" type="xsd:date"/>
+   <xsd:element name="adretu" type="xsd:string"/>
+   <xsd:element name="emailetu" type="xsd:string"/>
+   <xsd:element name="cel" type="xsd:int"/>
+   <xsd:element name="photoetu" type="xsd:string"/>
+   <xsd:element name="mdpetu" type="xsd:string"/>
+   <xsd:element name="dateinscriptetu" type="xsd:date"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="affecter" type="affecter"  maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="groupeniveau">
+   <xsd:element name="idgrp" type="xsd:int"/>
+   <xsd:element name="libgrp" type="xsd:string"/>
+   <xsd:element name="enseigner" type="enseigner"  maxOccurs="unbounded"/>
+   <xsd:element name="affecter" type="affecter"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer"  maxOccurs="unbounded"/>
+   <xsd:element name="df" type="niveau"/>
+   <xsd:element name="df" type="typegroupeniveau"/>
+   <xsd:element name="df" type="ue"/>
+  </xsd:element>
+  
+  <xsd:element name="typegroupeniveau">
+   <xsd:element name="idtypegrp" type="xsd:int"/>
+   <xsd:element name="libtypegrp" type="xsd:string"/>
+   <xsd:element name="df" type="groupeniveau" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="anneeacc">
+   <xsd:annotation>
+    <xsd:documentation>
+     Année Accadémique
+    </xsd:documentation>
+   </xsd:annotation>
+   <xsd:element name="idaac" type="xsd:int"/>
+   <xsd:element name="libaac" type="xsd:string"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="enseigner" type="enseigner"  maxOccurs="unbounded"/>
+   <xsd:element name="affecter" type="affecter"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer"  maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="session">
+   <xsd:element name="idses" type="xsd:int"/>
+   <xsd:element name="datedebutses" type="xsd:string"/>
+   <xsd:element name="datefinses" type="xsd:string"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer"  maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="semestre">
+   <xsd:element name="idsem" type="xsd:int"/>
+   <xsd:element name="libsem" type="xsd:string"/>
+   <xsd:element name="evaluer" type="evaluer"  maxOccurs="unbounded"/>
+   <xsd:element name="coureffectuer" type="coureffectuer" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:element>
+  
+  <xsd:element name="evaluer">
+   <xsd:element name="dateeval" type="xsd:date"/>
+   <xsd:element name="evaluer" type="enseignant"/>
+   <xsd:element name="evaluer" type="etudiant"/>
+   <xsd:element name="evaluer" type="anneeacc"/>
+   <xsd:element name="evaluer" type="session"/>
+   <xsd:element name="evaluer" type="semestre"/>
+   <xsd:element name="evaluer" type="ecue"/>
+  </xsd:element>
+  
+  <xsd:element name="enseigner">
+   <xsd:element name="enseigner" type="ecue"/>
+   <xsd:element name="enseigner" type="enseignant"/>
+   <xsd:element name="enseigner" type="groupeniveau"/>
+   <xsd:element name="enseigner" type="anneeacc"/>
+  </xsd:element>
+  
+  <xsd:element name="affecter">
+   <xsd:element name="affecter" type="etudiant"/>
+   <xsd:element name="affecter" type="anneeacc"/>
+   <xsd:element name="affecter" type="groupeniveau"/>
+  </xsd:element>
+  
+  <xsd:element name="coureffectuer">
+   <xsd:element name="datecourseff" type="xsd:date"/>
+   <xsd:element name="dureecourseff" type="xsd:int"/>
+   <xsd:element name="coureffectuer" type="ecue"/>
+   <xsd:element name="coureffectuer" type="enseignant"/>
+   <xsd:element name="coureffectuer" type="session"/>
+   <xsd:element name="coureffectuer" type="semestre"/>
+   <xsd:element name="coureffectuer" type="anneeacc"/>
+   <xsd:element name="coureffectuer" type="groupeniveau"/>
+  </xsd:element>
+
+</xsd:schema>
